@@ -1,9 +1,8 @@
 alert('Boas vindas ao jogo do número secreto');
+let numeroMaximo = parseInt(prompt("Escolha o numero máximo:"));
+let numeroSecreto = parseInt(Math.random() * (numeroMaximo)) +1;
 
-let numeroSecreto = parseInt(Math.random() * 11);
-console.log(numeroSecreto); 
-
-let chute = parseInt(prompt("Um número entre 1 e 10"));
+let chute = parseInt(prompt(`Um número entre 1 e ${numeroMaximo}`));	
 let tentativas = 1;
 
 while (chute != numeroSecreto) {  
@@ -11,18 +10,15 @@ while (chute != numeroSecreto) {
         break
     } else if (chute > numeroSecreto){
         alert(` número secreto é menor! `);
-        chute = parseInt(prompt("Um número entre 1 e 10"));
+        chute = parseInt(prompt(`Um número entre 1 e ${numeroMaximo}`));
         tentativas++;
     } else {
         alert(`voce errou o número secreto é maior!`);
-        chute = parseInt(prompt("Um número entre 1 e 10"));
+        chute = parseInt(prompt(`Um número entre 1 e ${numeroMaximo}`));
         tentativas++;
     }
 
 }
 
-if (tentativas == 1) {
-    alert(`O número secreto era ${numeroSecreto} e você acertou com apenas 1 tentativa`);
-} else {
-    alert(`O número secreto era ${numeroSecreto} e você acertou com ${tentativas} tentativas`);
-}
+let palavraTentativa = tentativas > 1 ? 'tentativas' : 'tentativa';
+alert(`O número secreto era ${numeroSecreto} e você acertou com ${tentativas} ${palavraTentativa}`);
